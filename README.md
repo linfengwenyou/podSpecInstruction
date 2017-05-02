@@ -25,24 +25,24 @@ pod spec create 库名
 ``` obj
 Pod::Spec.new do |s|
 
-s.name         = "UCSConvenientView"
+s.name         = "LWSConvenientView"
 s.version      = "1.0.1"
 s.summary      = "快速通过storyboard设置一些操作"
 s.description  = "快速通过storyboard设置一些常用的操作"
-s.homepage     = "http://172.17.16.23:3000/ucs_lius/UCSConvenientView"
+s.homepage     = "http://172.13.23:2001/LWS_lius/LWSConvenientView"
 s.license      = "MIT"
-s.author       = { "ucs_lius" => "linfengwenyou@sina.com" }
+s.author       = { "LWS_lius" => "linfengwenyou@sina.com" }
 s.platform     = :ios, "8.0"
-s.source       = { :git => "http://172.17.16.23:3000/ucs_lius/UCSConvenientView.git", :tag => s.version }
-s.source_files  = "UCSConvenientView/*.{h,m}"
+s.source       = { :git => "http://172.13.23:2001/LWS_lius/LWSConvenientView.git", :tag => s.version }
+s.source_files  = "LWSConvenientView/*.{h,m}"
 s.requires_arc = true
 
 s.subspec 'InspectView' do |ss|
-ss.source_files = 'UCSConvenientView/InspectView/*.{h,m}'
+ss.source_files = 'LWSConvenientView/InspectView/*.{h,m}'
 end
 
 s.subspec 'JMPassword' do |ss|
-ss.source_files = 'UCSConvenientView/JMPassword/*.{h,m}'
+ss.source_files = 'LWSConvenientView/JMPassword/*.{h,m}'
 end
 
 end
@@ -94,7 +94,7 @@ git push —-tags #将版本发布到git上
 
 初次添加：
 ``` obj
-pod repo push repoName UCSC****.podspec # repoName本地私有库名称  后面是要关联的代码库
+pod repo push repoName LWSC****.podspec # repoName本地私有库名称  后面是要关联的代码库
 ```
 如果是后续更改，直接去载下私有库，提交更新操作即可：
 ``` obj
@@ -116,7 +116,7 @@ Source ‘https:….’ // 私有仓库  #私有库用到的
 
 use_frameworks!
 Target ’**Demo’ do
-Pod ‘UCSTextField’,'0.0.1'
+Pod ‘LWSTextField’,'0.0.1'
 end
 ```
 
@@ -156,7 +156,7 @@ git add -A ：是上面两个功能的合集（git add --all的缩写）
 * s.source_files 文件要添加进去,第一个路径为库名下你用的文件夹
 假如库名为UITextField
 如果里面还有一个UITextField文件夹，并且你想加入的代码都在里面，那么配置为：
-"UCSTextField/*.{h,m}” 就行了，就已经代表在当前仓库中
+"LWSTextField/*.{h,m}” 就行了，就已经代表在当前仓库中
 * 描述文件要比摘要长一些
 
 
@@ -169,10 +169,10 @@ RPC failed; HTTP 403 curl 22 The requested URL returned error:403 Forbidden.
 
 #### 2. `pod repo push repoName ***.podsepec` 提示
 ``` obj
-ERROR | [iOS] unknown: Encountered an unknown error ([!] /usr/bin/git clone http://172.17.16.23:3000/test01/UCSTextField.git /var/folders/44/p497c_kn1yjfd8kpd55snlk80000gn/T/d20170310-3511-b578up --template= --single-branch --depth 1 --branch 1.0.0
+ERROR | [iOS] unknown: Encountered an unknown error ([!] /usr/bin/git clone http://172.13.23:2001/test01/LWSTextField.git /var/folders/44/p497c_kn1yjfd8kpd55snlk80000gn/T/d20170310-3511-b578up --template= --single-branch --depth 1 --branch 1.0.0
 
 ```
-###### 我这边找到的问题是必须要设置tag，但设置了tag就发了版本，勇哥的貌似不需要设置tag就行，还没看到。后续补充！
+###### 我这边找到的问题是必须要设置tag，
 操作如下：
 ``` obj
 git tag -m “注释” 1.0.0
